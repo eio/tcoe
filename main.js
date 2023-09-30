@@ -1,4 +1,6 @@
 // Parameters for tuning
+const PARTICLES = 45123; // The number of particles
+const PARTICLE_SIZE = 0.01; // The size of each particle
 const ZOOM_FACTOR = 3; // Higher numbers are further away
 const CAM_ROTATION = 0.005; // Adjust the rotation speed as needed
 
@@ -26,14 +28,12 @@ let targetPosition = new THREE.Vector3();
 
 // Function to create the particle system with smaller particles
 function createParticles(scene) {
-  const particles = 25000;
-  const particleSize = 0.01; // Adjust the size as needed
   const material = new THREE.PointsMaterial({
     color: 0x000000,
-    size: particleSize,
+    size: PARTICLE_SIZE,
   });
   geometry = new THREE.BufferGeometry();
-  const positions = new Float32Array(particles * 3);
+  const positions = new Float32Array(PARTICLES * 3);
 
   for (let i = 0; i < positions.length; i += 3) {
     const x = (Math.random() - 0.5) * 2; // Adjust the range as needed
