@@ -170,16 +170,28 @@ function animateParticles(geometry) {
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 camera.position.z = ZOOM_FACTOR; // Adjust the value to make it closer to the origin
 
-window.addEventListener('click', () => {
-    // Toggle between states
-    if (currentState === POS_GRAVITY) {
-      currentState = NEG_GRAVITY;
-    } else if (currentState === NEG_GRAVITY) {
-      currentState = CURL_NOISE;
-    } else {
-      currentState = POS_GRAVITY;
-    }
+// Handle mouse click to toggle between states
+window.addEventListener('click', (event) => {
+  event.preventDefault(); // Prevent default click behavior
+  toggleState();
 });
+
+// Handle touch events to toggle between states
+window.addEventListener('touchstart', (event) => {
+  event.preventDefault(); // Prevent default touch behavior (e.g., scrolling)
+  toggleState();
+}, { passive: false });
+
+function toggleState() {
+  // Toggle between states
+  if (currentState === POS_GRAVITY) {
+    currentState = NEG_GRAVITY;
+  } else if (currentState === NEG_GRAVITY) {
+    currentState = CURL_NOISE;
+  } else {
+    currentState = POS_GRAVITY;
+  }
+}
 
 // Start the animation
 createParticles(scene);
