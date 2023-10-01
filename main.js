@@ -66,32 +66,6 @@ function resetParticles(geometry) {
 }
 
 // Function to apply gravity
-function applyGravity() {
-    const groupCenterX = 0; // X-coordinate of the center of the group
-    const groupCenterY = 0; // Y-coordinate of the center of the group
-    const groupCenterZ = 0; // Z-coordinate of the center of the group
-
-    // Move particles toward the group center
-    const dx = groupCenterX - x;
-    const dy = groupCenterY - y;
-    const dz = groupCenterZ - z;
-
-    // Calculate the distance to the group center
-    const distance = Math.sqrt(dx * dx + dy * dy + dz * dz);
-
-    // Apply gravitational force
-    const forceX = (G * dx) / distance;
-    const forceY = (G * dy) / distance;
-    const forceZ = (G * dz) / distance;
-
-    x = x + forceX
-    y = y + forceY
-    z = z + forceZ
-    return 
-    // Update particle positions with the applied force
-    positionAttribute.setXYZ(i, x + forceX, y + forceY, z + forceZ);
-}
-
 function applyGravity(positionAttribute, i, x, y, z, G) {
   const groupCenterX = 0;
   const groupCenterY = 0;
